@@ -14,9 +14,12 @@ public class GrappleTip : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if (other.tag == "Wall" && !grappleHook.GetComponent<GrapplerHook>().IsGrappleLatched()) {
+		if (other.tag == "Wall" && !grappleHook.GetComponent<GrapplerHook> ().IsGrappleLatched ()) {
 			Debug.Log ("Latching the grapple", transform);
-			grappleHook.GetComponent<GrapplerHook>().LatchGrapple();
+			grappleHook.GetComponent<GrapplerHook> ().LatchGrapple ();
+		} else {
+			transform.parent.GetComponent<GrapplerHook>().fireGrapple = false;
+			transform.parent.GetComponent<GrapplerHook>().retrieveGrapple = true;
 		}
 	}
 }
